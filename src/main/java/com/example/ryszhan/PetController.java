@@ -14,13 +14,12 @@ public class PetController {
         this.petRepository = petRepository;
     }
 
-    // 1️⃣ GET all pets
+
     @GetMapping
     public List<Pet> getAllPets() {
         return petRepository.findAll();
     }
 
-    // 2️⃣ GET single pet by ID
     @GetMapping("/{id}")
     public Pet getPetById(@PathVariable int id) {
         Pet pet = petRepository.findById(id);
