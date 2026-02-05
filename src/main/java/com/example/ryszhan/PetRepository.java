@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public class PetRepository {
 
-    // GET all pets
     public List<Pet> findAll() {
         List<Pet> list = new ArrayList<>();
         String sql = "SELECT * FROM pet";
@@ -37,7 +36,6 @@ public class PetRepository {
         return list;
     }
 
-    // GET single pet by ID
     public Pet findById(int id) {
         String sql = "SELECT * FROM pet WHERE id=?";
         try (Connection conn = db.getConnection();
@@ -59,10 +57,9 @@ public class PetRepository {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null; // not found
+        return null;
     }
 
-    // POST new pet
     public void save(Pet pet) {
         String sql = "INSERT INTO pet(name, species, age, color) VALUES (?, ?, ?, ?)";
         try (Connection conn = db.getConnection();
@@ -80,7 +77,6 @@ public class PetRepository {
         }
     }
 
-    // PUT update color
     public boolean updateColor(int id, String color) {
         String sql = "UPDATE pet SET color=? WHERE id=?";
         try (Connection conn = db.getConnection();
@@ -97,7 +93,6 @@ public class PetRepository {
         return false;
     }
 
-    // DELETE pet by ID
     public boolean deleteById(int id) {
         String sql = "DELETE FROM pet WHERE id=?";
         try (Connection conn = db.getConnection();
